@@ -1,0 +1,31 @@
+.hoverwell:hover {
+  background-color: #485563;
+  cursor: pointer;
+}
+body {
+  background-color: #f3f3f3;
+}
+h1 {
+  color: black;
+}
+label {
+  color: black;
+}
+.container {
+  padding-top: 10px;
+}
+
+.pointable {
+  cursor: pointer;
+}
+
+button {
+  color: #555;
+}
+.btn-primary {
+  background-color: #5885af;
+}
+
+[hidden] {
+  display: none !important;
+}
