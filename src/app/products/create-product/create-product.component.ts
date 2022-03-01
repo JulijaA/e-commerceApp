@@ -19,6 +19,7 @@ export class CreateProductComponent implements OnInit {
   }
   saveProduct(formValues: any) {
     this.productService.saveProduct(formValues).subscribe(() => {
+
       this.isDirty = false;
       this.router.navigate(['/products']);
     })

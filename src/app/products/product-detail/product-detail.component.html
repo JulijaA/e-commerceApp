@@ -7,16 +7,17 @@
     </div>
 
     <div class="row">
-        <div class="col-md-6">
-            <div><strong>Name:</strong> {{product?.name}}</div>
-            <div><strong>Brand:</strong> {{product?.brand}}</div>
-            <div><strong>Gender:</strong> {{product?.gender}}</div>
-            <div><strong>Quantity:</strong> {{product?.quantity}}</div>
-            <div><strong>Description:</strong> {{product?.description}}</div>
+        <div class="col-md-5">
+            <div class="productSpec"><strong>Name:</strong> {{product?.name}}</div>
+            <div class="productSpec"><strong>Model:</strong> {{product?.model}}
+            </div>
+            <div class="productSpec"><strong>Quantity:</strong> {{product?.quantity}}</div>
 
-            <div><strong>Price:</strong> {{product?.price | currency:'USD'}}</div>
+
+            <div class="productSpec"><strong>Price:</strong> {{product?.price | currency:'USD'}}</div>
+
         </div>
-
+        <div class="image-position"> <img [src]="product?.imageUrl" [alt]="product?.name" class="product-image"></div>
     </div>
     <button type="submit" class="btn btn-primary" >Update</button>
     <button type="button" class="btn btn-default" >Delete</button>

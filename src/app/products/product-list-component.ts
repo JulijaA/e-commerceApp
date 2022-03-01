@@ -62,14 +62,6 @@ export class ProductsListComponent implements OnInit {
         })
         this.filteredProducts = this.products;
 
-        // this.route.params.subscribe(params => {
-        //     if(params.searchTerm) {
-        //         this.products = this.productService.getProducts.pipe(filter((product: { name: string; }) => product.name.toLocaleLowerCase().includes(params.searchTerm.toLocaleLowerCase())))
-        //     }
-        // })
     }
 }
 
-function getProducts() {
-  throw new Error("Function not implemented.");
-}

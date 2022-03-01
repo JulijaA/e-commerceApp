@@ -14,8 +14,11 @@ import { IProduct } from '../shared/product.model';
         color: black;
         }
     .product-image {
-        height: 100px;
+        height: 400px;
 }
+    .productSpec {
+            margin: 60px;
+        }
 
 
   `]

@@ -5,15 +5,16 @@ import { Component, Input } from "@angular/core";
     template: `
     <div [routerLink]="['/products', product.id]" class="well hoverwell thumbnail">
         <h2>{{product?.name | uppercase}}</h2>
-        <div class="productSpec"><strong>Brand:</strong> {{product?.brand.name}}
-        </div>
+
         <div class="productSpec"><strong>Gender:</strong> {{product?.gender.name}}
         </div>
         <div class="productSpec"><strong>Quantity:</strong> {{product?.quantity}}
         </div>
-        <div class="productSpec"><strong>Type Of Product:</strong> {{product?.typeOfProduct.name}}
+        <div class="productSpec"><strong>Model:</strong> {{product?.model}}
         </div>
+
         <div class="productSpec"><strong>Price:</strong> {{product?.price | currency:'USD'}}</div>
+
     </div>
     `,
     styles: [
@@ -31,7 +32,9 @@ import { Component, Input } from "@angular/core";
         .well div {
             color: black;
         }
-
+        .image-position {
+          border: 1px solid black;
+        }
         `
     ]
 
