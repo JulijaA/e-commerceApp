@@ -1,9 +1,11 @@
 import { Component, Input } from "@angular/core";
+import { CartService } from "./shared/cart.service";
+import { IProduct } from "./shared/product.model";
 
 @Component({
     selector: 'product-thumbnail',
     template: `
-    <div [routerLink]="['/products', product.id]" class="well hoverwell thumbnail">
+    <div class="well hoverwell thumbnail">
         <h2>{{product?.name | uppercase}}</h2>
 
         <div class="productSpec"><strong>Gender:</strong> {{product?.gender.name}}
@@ -14,6 +16,10 @@ import { Component, Input } from "@angular/core";
         </div>
 
         <div class="productSpec"><strong>Price:</strong> {{product?.price | currency:'USD'}}</div>
+
+        <div>
+          <button class="btn btn-primary" (click)="addToCart(product)">Add to cart</button>
+          <button class="btn" [routerLink]="['/products', product.id]">View Detail</button></div>
 
     </div>
     `,
@@ -29,6 +35,16 @@ import { Component, Input } from "@angular/core";
         .productSpec {
             margin: 15px;
         }
+
+        .btn {
+          margin-top: 10px;
+        }
+        .btn:hover {
+        background-color: #1f547a;
+        }
+        .btn:focus {
+        background-color: #1f547a;
+        }
         .well div {
             color: black;
         }
@@ -42,5 +58,19 @@ import { Component, Input } from "@angular/core";
 
 export class ProductThumbnailComponent {
    @Input() product:any
+
+   constructor(private cartService:CartService) {
+
+   }
+   ngOnInit() {
+
+   }
+
+   addToCart(product: IProduct) {
+    this.cartService.addToCart(product);
+    window.alert('Your product has been added to the cart')
+
+
+   }
 
 }

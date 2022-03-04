@@ -10,12 +10,15 @@ import { CreateProductComponent } from './products/create-product/create-product
 
 import { ProductListResolver } from './products/products-list-resolver.service';
 import { ProductResolver } from './products/product-resolver.service';
+import { CartComponent } from './products/cart/cart.component';
+
 
 
 export const appRoutes:Routes = [
   {path: 'products/new', component: CreateProductComponent, canDeactivate: ['canDeactivateCreateProduct']},
   {path: 'products', component: ProductsListComponent, resolve: {products:ProductListResolver}},
   {path: 'products/:id', component: ProductDetailComponent, resolve: {product:ProductResolver}},
+  {path: 'cart', component: CartComponent},
   {path: 'search/:search', component: ProductsListComponent},
   {path: '404', component: Error404Component},
   {path: '', redirectTo: '/products', pathMatch: 'full'},

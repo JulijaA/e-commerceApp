@@ -12,6 +12,10 @@
                 <li><a [routerLink]="['/products/new']" routerLinkActive="active">Create Product</a></li>
             </ul>
             <div class="navbar-header navbar-right">
+              <button class="btn btn-primary navbar-nav" routerLink="/cart">
+                <i style="font-size: 20px;" class="fas fa-cart-plus"></i>
+
+              </button>
                 <ul class="nav navbar-nav">
                     <li>
                         <a *ngIf="!auth.isAuthenticated()" routerLinkActive="active" [routerLink]="['user/login']">Login</a>

@@ -20,6 +20,12 @@ li > a.active {
 li > a:hover {
   background-color: #1f547a;
 }
+.btn:hover {
+  background-color: #1f547a;
+}
+.btn:focus {
+  background-color: #1f547a;
+}
 a {
   color: white;
 }

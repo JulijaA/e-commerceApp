@@ -17,7 +17,8 @@ import { AuthService } from './user/login/auth.service';
 import { HttpClientModule } from '@angular/common/http'
 import { ProductResolver } from './products/product-resolver.service';
 import { UserModule } from './user/user.module';
-
+import { CartComponent } from './products/cart/cart.component';
+import { CartService } from './products/shared/cart.service';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { UserModule } from './user/user.module';
     ProductThumbnailComponent,
     ProductDetailComponent,
     CreateProductComponent,
-    Error404Component
+    Error404Component,
+    CartComponent
   ],
   imports: [
     BrowserModule,
@@ -42,6 +44,7 @@ import { UserModule } from './user/user.module';
   providers: [
     ProductListResolver,
     ProductService,
+    CartService,
     ProductResolver,
     AuthService,
     {
