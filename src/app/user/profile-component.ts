@@ -21,27 +21,27 @@ export class ProfileComponent implements OnInit{
   }
 
   profileForm!: FormGroup;
-  private firstName!: FormControl;
-  private lastName!: FormControl;
+  private userName!: FormControl;
+  private password!: FormControl;
   ngOnInit() {
-    this.firstName = new FormControl(this.authService.currentUser?.firstName, [Validators.required, Validators.pattern('[a-zA-Z].*')]);
-    this.lastName = new FormControl(this.authService.currentUser?.lastName, Validators.required);
+    this.userName = new FormControl(this.authService.currentUser?.userName, [Validators.required, Validators.pattern('[a-zA-Z].*')]);
+    this.password = new FormControl(this.authService.currentUser?.password, Validators.required);
     this.profileForm = new FormGroup({
-      firstName: this.firstName,
-      lastName: this.lastName
+      userName: this.userName,
+      password: this.password
     })
   }
   saveProfile(formValues: any) {
     if (this.profileForm.valid) {
-      this.authService.updateCurrentUser(formValues.firstName, formValues.lastName)
+      this.authService.updateCurrentUser(formValues.userName, formValues.password)
       this.router.navigate(['products'])
     }
   }
-  validateFirstName() {
-   return this.firstName.valid || this.firstName.untouched
+  validateUserName() {
+   return this.userName.valid || this.userName.untouched
   }
-  validateLastName() {
-   return this.lastName.valid || this.lastName.untouched
+  validatePassword() {
+   return this.password.valid || this.password.untouched
   }
   cancel() {
     this.router.navigate(['products'])

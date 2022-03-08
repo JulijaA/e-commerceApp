@@ -19,6 +19,7 @@ import { ProductResolver } from './products/product-resolver.service';
 import { UserModule } from './user/user.module';
 import { CartComponent } from './products/cart/cart.component';
 import { CartService } from './products/shared/cart.service';
+import { RegisterService } from './user/register/register/register.service';
 
 
 @NgModule({
@@ -47,6 +48,8 @@ import { CartService } from './products/shared/cart.service';
     CartService,
     ProductResolver,
     AuthService,
+    RegisterService,
+
     {
       provide: 'canDeactivateCreateProduct',
       useValue: checkDirtyState

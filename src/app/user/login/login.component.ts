@@ -12,13 +12,12 @@ import { Router } from '@angular/router';
             color: #e05c65;
             padding-left: 10px;
             }
-            h1 {
-  color: black;
-}
-label {
-  color: black;
-}
-
+        h1 {
+            color: black;
+            }
+        label {
+            color: black;
+            }
         `
     ]
 })

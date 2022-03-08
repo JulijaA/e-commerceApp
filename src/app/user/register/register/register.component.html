@@ -1,0 +1,45 @@
+
+<!-- NEEDS WORK -->
+
+<div class="container">
+  <h1>Register</h1>
+  <hr>
+  <div class="col-md-4">
+    <form #registerForm="ngForm" ngModel (ngSubmit)="register(registerForm)" autocomplete="off" novalidate>
+      <div class="form-group">
+        <label for="userName">User Name:</label>
+        <em
+          *ngIf="registerForm.controls.userName?.invalid && registerForm.controls.userName?.touched">required</em>
+        <input  name="userName" id="userName" type="text" class="form-control" ngModel
+          placeholder="User Name..." required />
+      </div>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <em
+          *ngIf="registerForm.controls.password?.invalid && registerForm.controls.password?.touched">required</em>
+        <input  name="password" id="password" type="password" class="form-control"ngModel
+          placeholder="Password..." required />
+      </div>
+      <div class="form-group">
+        <label for="city">City:</label>
+        <em *ngIf="registerForm.controls.city?.invalid && registerForm.controls.city?.touched">required</em>
+        <input name="city" id="city" type="text" class="form-control" placeholder="City..." ngModel required />
+      </div>
+      <div class="form-group">
+        <label for="postalCode">Postal Code:</label>
+        <em *ngIf="registerForm.controls.postalCode?.invalid && registerForm.controls.postalCode?.touched">required</em>
+        <input name="postalCode" id="postalCode" type="number" class="form-control"  ngModel placeholder="Postal Code..." required />
+      </div>
+      <div class="form-group">
+        <label for="address">Address:</label>
+        <em *ngIf="registerForm.controls.address?.invalid && registerForm.controls.address?.touched">required</em>
+        <input name="address" id="address" type="address" class="form-control" ngModel placeholder="Address..." required />
+      </div>
+      <span  >
+        <button type="submit"  [disabled]="registerForm.invalid" class="btn btn-primary">Register</button>
+      </span>
+      <button type="button" (click)="cancel()" class="btn btn-default">Cancel</button>
+    </form>
+
+  </div>
+</div>
