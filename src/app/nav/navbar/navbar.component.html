@@ -18,9 +18,10 @@
               </button>
                 <ul class="nav navbar-nav">
                     <li>
-                        <a *ngIf="!auth.isAuthenticated()" routerLinkActive="active" [routerLink]="['user/login']">Login</a>
-                        <a *ngIf="auth.isAuthenticated()" [routerLink]="['user/profile']">Welcome {{auth.currentUser.userName }} </a>
+                        <a *ngIf="!isUserAuthenticated()" routerLinkActive="active" [routerLink]="['user/login']">Login</a>
+                        <a *ngIf="isUserAuthenticated()" [routerLink]="['user/profile']">Welcome  </a>
                     </li>
+                    <li *ngIf="isUserAuthenticated()"><a class="logout" (click)="logOut()">Logout</a></li>
                 </ul>
             </div>
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { IProduct } from '../shared/product.model';
 import { ProductService } from '../shared/product.service';
 
 @Component({
@@ -12,14 +13,18 @@ import { ProductService } from '../shared/product.service';
 export class CreateProductComponent implements OnInit {
 
   isDirty:boolean = true;
-  newProduct: any
-  constructor(private router: Router, private productService:ProductService,  public fb: FormBuilder,) { }
+  product!: IProduct;
+  submitted: boolean = false;
+
+
+  constructor(private router: Router, private productService:ProductService) { }
 
   ngOnInit(): void {
   }
-  saveProduct(formValues: any) {
-    this.productService.saveProduct(formValues).subscribe(() => {
 
+  saveProduct(form: NgForm) {
+    this.productService.saveProduct(form.value).subscribe((res) => {
+      console.log(res);
       this.isDirty = false;
       this.router.navigate(['/products']);
     })

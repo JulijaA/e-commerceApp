@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { RegisterComponent } from './register/register/register.component';
 
 
+
 @NgModule({
     imports: [
         CommonModule,
@@ -18,9 +19,9 @@ import { RegisterComponent } from './register/register/register.component';
     declarations: [
         ProfileComponent,
         LoginComponent,
-        RegisterComponent    
+        RegisterComponent
     ],
-    providers: [ 
+    providers: [
 
     ]
 })

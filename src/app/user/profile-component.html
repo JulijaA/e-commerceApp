@@ -1,24 +1,8 @@
 <div class="container">
-    <h1>Edit Your Profile </h1>
+    <h1>Profile </h1>
     <hr>
-    <div class="col-md-4">
-        <form [formGroup]="profileForm" autocomplete="off" (ngSubmit)="saveProfile(profileForm.value)" novalidate>
-            <div class="form-group" [ngClass]="{'error' : !validateUserName()}">
-                <label for="userName">User Name:</label>
-                <em *ngIf="!validateUserName()">required</em>
 
-                <input formControlName="userName" id="userName" type="text" class="form-control"
-                    placeholder="User Name..." />
-            </div>
-            <div class="form-group" [ngClass]="{'error' : !validatePassword()}">
-                <label for="password">Change Password:</label>
-                <em *ngIf="!validatePassword()">required</em>
-                <input formControlName="password" id="password" type="password" class="form-control"
-                    placeholder="Password..." />
-            </div>
-
-            <button type="submit" class="btn btn-primary">Save</button>
-            <button type="button" class="btn btn-default" (click)="cancel()">Cancel</button>
-        </form>
-    </div>
 </div>
+
+
+

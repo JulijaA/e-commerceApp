@@ -12,27 +12,29 @@ export class ProductService {
 
   baseUrl: string = "https://localhost:44356"
 
-
-
   constructor(private http: HttpClient) { }
 
   getProducts():Observable<IProduct[]> {
-
     return this.http.get<IProduct[]>(this.baseUrl + '/api/products')
     .pipe(catchError(this.handleError<IProduct[]>('getProducts', [])))
   }
-
 
   getProduct(id:number):Observable<IProduct> {
     return this.http.get<IProduct>(`${this.baseUrl}/api/products/${id}`)
     .pipe(catchError(this.handleError<IProduct>('getProduct')))
   }
 
-  saveProduct(product:IProduct):Observable<IProduct> {
+  saveProduct(id: number):Observable<IProduct> {
     let options = { headers: new HttpHeaders({'Content-Type': 'application/json'})};
-    return this.http.post<IProduct>(this.baseUrl + '/api/products', product, options)
+    return this.http.post<IProduct>(`${this.baseUrl}/api/products`, id,  options)
     .pipe(catchError(this.handleError<IProduct>('saveProduct' )))
   }
+
+  deleteProduct(id: number): Observable<IProduct> {
+    let options = { headers: new HttpHeaders({'Content-Type': 'application/json'})};
+    return this.http.delete<IProduct>(`${this.baseUrl}/api/products/${id}` ,options)
+  .pipe(catchError(this.handleError<IProduct>('deleteProduct' )))
+}
 
    private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {

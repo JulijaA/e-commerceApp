@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -18,25 +19,41 @@ import { Router } from '@angular/router';
         label {
             color: black;
             }
+
         `
     ]
 })
 export class LoginComponent implements OnInit {
 
-  userName: any
-  password: any
+  invalidLogin!: boolean;
+  userName!: string;
+  password!:string;
   mouseoverLogin: any
-  constructor(private authService:AuthService, private router:Router) { }
+  constructor(private route: Router, private http:HttpClient) {}
+
+  login(form: NgForm) {
+    const credentials ={
+       'userName': form.value.userName,
+       'password': form.value.password,
+    }
+  this.http.post('https://localhost:44356/api/Account/login', credentials)
+    .subscribe(response => {
+      const token = (<any>response).token;
+      localStorage.setItem("jwt", token);
+      this.invalidLogin = false;
+      this.route.navigate(['/products']);
+  }, _err => {
+      this.invalidLogin = true;
+  })
+
+  }
 
   ngOnInit(): void {
-  }
-  login(formValues: any) {
-    this.authService.loginUser(formValues.userName, formValues.password)
-    this.router.navigate(['products'])
-
-  }
-  cancel() {
-    this.router.navigate(['products'])
-  }
 
 }
+   cancel() {
+    this.route.navigate(['products'])
+  }
+}
+
+

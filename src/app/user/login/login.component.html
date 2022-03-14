@@ -2,25 +2,30 @@
 <h1>Login</h1>
 <hr>
 <div class="col-md-4">
-    <form #loginForm="ngForm" (ngSubmit)="login(loginForm.value)" autocomplete="off">
-        <div class="form-group">
-            <label for="userName">User Name:</label>
-        <em *ngIf="loginForm.controls.userName?.invalid && (loginForm.controls.userName?.touched || mouseoverLogin)">required</em>
-            <input (ngModel)="userName" name="userName" id="userName" type="text" class="form-control"
-                placeholder="User Name..." required />
-        </div>
-        <div class="form-group">
-            <label for="password">Password:</label>
-        <em *ngIf="loginForm.controls.password?.invalid && (loginForm.controls.password?.touched || mouseoverLogin)">required</em>
-            <input (ngModel)="password" name="password" id="password" type="password" class="form-control"
-                placeholder="Password..." required />
-        </div>
-        <div style="color: black" class="form-group">Not registered in yet? <a style="color: black; text-decoration: underline;" routerLink="/register">Register</a></div>
-        <span (mouseenter)="mouseoverLogin=true" (mouseleave)="mouseoverLogin=false">
-            <button type="submit" [disabled]="loginForm.invalid" class="btn btn-primary">Login</button>
-        </span>
-        <button type="button" (click)="cancel()" class="btn btn-default">Cancel</button>
-    </form>
+  <form class="form-singin" #loginForm="ngForm" (ngSubmit)="login(loginForm)" novalidate >
+    <div class="form-group" >
+      <div *ngIf="invalidLogin" class="form-group">
+        <div class="alert alert-danger">Invalid username or password</div>
+      </div>
+      <em *ngIf="loginForm.controls.userName?.invalid && loginForm.controls.userName?.touched">required</em>
+      <label for="username">Username</label>
+    <input type="text" id="userName" name="userName" ngModel class="form-control" placeholder="User Name.." required
+      autofocus>
+
+      </div>
+    <div class="form-group">
+      <em
+        *ngIf="loginForm.controls.password?.invalid && loginForm.controls.password?.touched">required</em>
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" ngModel class="form-control" placeholder="Password.." required
+        autofocus>
+    </div>
+    <div style="color: black" class="form-group">Not registered yet? <a style="color: black; text-decoration: underline;"
+        routerLink="/register">Register</a></div>
+
+      <button type="submit" [disabled]="loginForm.invalid" class="btn btn-primary">Login</button>
+      <button type="button" (click)="cancel()" class="btn btn-default">Cancel</button>
+  </form>
 
 </div>
 </div>

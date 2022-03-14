@@ -19,8 +19,11 @@ import { ProductResolver } from './products/product-resolver.service';
 import { UserModule } from './user/user.module';
 import { CartComponent } from './products/cart/cart.component';
 import { CartService } from './products/shared/cart.service';
-import { RegisterService } from './user/register/register/register.service';
+import { JwtModule } from '@auth0/angular-jwt';
 
+export function tokenGetter() {
+  return localStorage.getItem("access_token");
+}
 
 @NgModule({
   declarations: [
@@ -41,6 +44,12 @@ import { RegisterService } from './user/register/register/register.service';
     RouterModule.forRoot(appRoutes),
     HttpClientModule,
     UserModule,
+    JwtModule.forRoot({
+      config: {
+       tokenGetter: tokenGetter,
+      allowedDomains: ["localhost:44356", "foo.com", "bar.com"]
+      },
+      }),
   ],
   providers: [
     ProductListResolver,
@@ -48,7 +57,6 @@ import { RegisterService } from './user/register/register/register.service';
     CartService,
     ProductResolver,
     AuthService,
-    RegisterService,
 
     {
       provide: 'canDeactivateCreateProduct',

@@ -1,45 +1,40 @@
-
-<!-- NEEDS WORK -->
-
 <div class="container">
   <h1>Register</h1>
   <hr>
   <div class="col-md-4">
-    <form #registerForm="ngForm" ngModel (ngSubmit)="register(registerForm)" autocomplete="off" novalidate>
-      <div class="form-group">
-        <label for="userName">User Name:</label>
-        <em
-          *ngIf="registerForm.controls.userName?.invalid && registerForm.controls.userName?.touched">required</em>
-        <input  name="userName" id="userName" type="text" class="form-control" ngModel
-          placeholder="User Name..." required />
+    <form #registerForm="ngForm" (ngSubmit)="register(registerForm)" novalidate autocomplete="off">
+    <div class="form-group">
+      <div *ngIf="invalidRegister" class="form-group">
+        <div class="alert alert-danger">Account with that username already exists</div>
       </div>
       <div class="form-group">
-        <label for="password">Password:</label>
-        <em
-          *ngIf="registerForm.controls.password?.invalid && registerForm.controls.password?.touched">required</em>
-        <input  name="password" id="password" type="password" class="form-control"ngModel
-          placeholder="Password..." required />
-      </div>
+        <em *ngIf="registerForm.controls.userName?.invalid && registerForm.controls.userName?.touched">required</em>
+      <label for="username">Username</label>
+      <input type="text" id="userName" name="userName" ngModel class="form-control" placeholder="User Name.." required>
+        </div>
+    </div>
+    <div class="form-group">
+      <em *ngIf="registerForm.controls.password?.invalid && registerForm.controls.password?.touched">required</em>
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" ngModel class="form-control" placeholder="Password.." required>
+    </div>
       <div class="form-group">
-        <label for="city">City:</label>
         <em *ngIf="registerForm.controls.city?.invalid && registerForm.controls.city?.touched">required</em>
-        <input name="city" id="city" type="text" class="form-control" placeholder="City..." ngModel required />
+        <label for="city">City:</label>
+        <input name="city" id="city" type="text" ngModel class="form-control" placeholder="City..." required />
       </div>
       <div class="form-group">
-        <label for="postalCode">Postal Code:</label>
         <em *ngIf="registerForm.controls.postalCode?.invalid && registerForm.controls.postalCode?.touched">required</em>
-        <input name="postalCode" id="postalCode" type="number" class="form-control"  ngModel placeholder="Postal Code..." required />
+        <label for="postalCode">Postal Code:</label>
+        <input name="postalCode" id="postalCode" type="text" ngModel class="form-control" placeholder="Postal Code..." required />
       </div>
       <div class="form-group">
-        <label for="address">Address:</label>
         <em *ngIf="registerForm.controls.address?.invalid && registerForm.controls.address?.touched">required</em>
-        <input name="address" id="address" type="address" class="form-control" ngModel placeholder="Address..." required />
+        <label for="address">Address:</label>
+        <input name="address" id="address" type="text" ngModel class="form-control" placeholder="Address..." required />
       </div>
       <span  >
-        <button type="submit"  [disabled]="registerForm.invalid" class="btn btn-primary">Register</button>
+        <button type="submit" [disabled]="registerForm.invalid" class="btn btn-primary">Register</button>
       </span>
       <button type="button" (click)="cancel()" class="btn btn-default">Cancel</button>
     </form>
-
-  </div>
-</div>

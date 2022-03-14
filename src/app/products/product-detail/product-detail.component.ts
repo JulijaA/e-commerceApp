@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../shared/product.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IProduct } from '../shared/product.model';
 
 
@@ -29,7 +29,7 @@ export class ProductDetailComponent implements OnInit {
   activatedRoute: any;
 
 
-  constructor(private productService:ProductService, private route:ActivatedRoute) { }
+  constructor(private productService:ProductService, private route:ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
 
@@ -38,5 +38,9 @@ export class ProductDetailComponent implements OnInit {
       console.log(this.product = data['product']);
 
     });
+}
+  delete(product:IProduct): void {
+    this.productService.deleteProduct(product.id).subscribe();
+    this.router.navigate(['/products']);
 }
 }

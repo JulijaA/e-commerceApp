@@ -19,6 +19,6 @@
         </div>
         <div class="image-position"> <img [src]="product?.imageUrl" [alt]="product?.name" class="product-image"></div>
     </div>
-    <button type="submit" class="btn btn-primary" >Update</button>
-    <button type="button" class="btn btn-default" >Delete</button>
+    <button type="submit" class="btn btn-primary">Update</button>
+    <button type="button" class="btn btn-default" (click)="delete(product)" >Delete</button>
 </div>
