@@ -36,8 +36,8 @@ export class ProductDetailComponent implements OnInit {
     this.route.data.forEach((data) => {
       this.product = data['product'];
       console.log(this.product = data['product']);
-
     });
+
 }
   delete(product:IProduct): void {
     this.productService.deleteProduct(product.id).subscribe();
